@@ -1,98 +1,104 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router'; //navegar entre telas 
+import { StatusBar } from 'expo-status-bar'; //controle da barra de status do celular 
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'; //componentes
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+//Define e exibe tela inicial
+export default function Inicio() {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    //container principal da tela
+    <View style={styles.container}>
+      <StatusBar style="light" />
+    {/*container cirular ao redor da logo*/}
+      <View style={styles.logoContainer}>
+    {/*Logo*/}   
+        <Image
+          source={require('../../assets/images/produtos/logo-acaindo.png')}
+          style={styles.logoImagem}
+          resizeMode="cover"
+          accessibilityLabel="Logo da Açaíteria"
+        />
+      </View>
+    {/*Nome do aplicativo*/}
+      <Text style={styles.titulo}>Açaindo Delivery</Text>
+
+    {/*mensagem de boas vindas*/}
+      <Text style={styles.boasvindas}>
+        Bem-vindo! Monte seu açaí do jeito que você gosta.
+      </Text>
+    {/*Imagem de destaque*/}
+      <Image
+        source={require('../../assets/images/produtos/acai-tradicional (1).png')}
+        style={styles.destaque}
+        resizeMode="cover"
+        accessibilityLabel="Açaí tradicional"
+      />
+    {/*Botao pra abrir cardapio*/}
+      <TouchableOpacity
+        style={styles.botao}
+        activeOpacity={0.8}
+        onPress={() => router.push('/cardapio')}
+      >
+        <Text style={styles.textobotao}>Ver cardápio</Text>
+      </TouchableOpacity>
+    {/*Horario de funcionamento*/}
+      <Text style={styles.rodape}>Delivery • [7:00 ás 18:00]</Text>
+    </View>
   );
 }
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
+// aparência
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    flex: 1, // ocupa toda a tela disponível
+    backgroundColor: '#4B1D6B', // cor de fundo
+    alignItems: 'center', // centraliza os elementos
+    justifyContent: 'center', // centraliza os elementos
+    padding: 32, // espaço interno
+    gap: 20, // espaço entre os elementos
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+  logoContainer: {
+    width: 96, // largura
+    height: 96, // altura
+    borderRadius: 48, // arredonda os cantos
+    overflow: 'hidden', // esconde o que ultrapassar as bordas
+    backgroundColor: '#E9D5F5', // cor de fundo
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  logoImagem: {
+    width: '100%', // ocupa toda a largura do container
+    height: '100%', // ocupa toda a altura do container
   },
-  title: {
-    textAlign: 'center',
+  titulo: {
+    fontSize: 40, // tamanho do texto
+    fontWeight: 'bold', // deixa o texto em negrito
+    color: '#FFFFFF', // cor do texto
   },
-  code: {
-    textTransform: 'uppercase',
+  boasvindas: {
+    fontSize: 17, // tamanho do texto
+    color: '#E9D5F5', // cor do texto
+    textAlign: 'center', // centraliza o texto
+    maxWidth: 280, // limita a largura máxima do texto
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  destaque: {
+    width: 220, // largura
+    height: 220, // altura
+    borderRadius: 110, // arredonda os cantos
+  },
+  botao: {
+    backgroundColor: '#E9D5F5', // cor de fundo
+    paddingVertical: 16, // espaço interno vertical
+    borderRadius: 14, // arredonda os cantos
+    width: '100%', // ocupa toda a largura disponível
+    maxWidth: 300, // limita a largura máxima do botão
+    alignItems: 'center', // centraliza os elementos
+  },
+  textobotao: {
+    color: '#4B1D6B', // cor do texto
+    fontSize: 17, // tamanho do texto
+    fontWeight: 'bold', // deixa o texto em negrito
+  },
+  rodape: {
+    color: '#E9D5F5', // cor do texto
+    fontSize: 13, // tamanho do texto
   },
 });

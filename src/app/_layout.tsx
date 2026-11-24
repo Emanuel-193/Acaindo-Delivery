@@ -1,18 +1,21 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { Stack } from "expo-router"; //cria a navegação entre telas
+import { CarrinhoProvider } from "@/context/CarrinhoContext"; //compartilha os carrinhos entre as telas
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    //O Carrinho está mais fora para todas as telas poderem acessar ele, o resto é o "caminho" das telas
+    <CarrinhoProvider> 
+      <Stack>
+        
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        
+        <Stack.Screen name="cardapio" options={{ title: "Cardápio" }} />
+       
+        <Stack.Screen name="carrinho" options={{ title: "Carrinho" }} />
+       
+        <Stack.Screen name="pedido" options={{ title: "Pedido" }} />
+
+      </Stack>
+    </CarrinhoProvider>
   );
 }
