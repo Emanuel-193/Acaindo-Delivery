@@ -2,7 +2,7 @@ import type { ImageSourcePropType } from 'react-native';
 
 // Tipo dos dados de cada produto
 export type Produto = {
-  id: number; //id do produto
+  id: number; //id  produto
   nome: string; //nome do produto
   descricao: string; //descrição do produto
   preco: number; //preço do produto

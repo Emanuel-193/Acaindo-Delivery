@@ -10,5 +10,5 @@ export const cores = {
   rosaEscuro: '#8A1C5A', //preços e informações
   verde: '#2E7D32', //confirmação de pedidos
   texto: '#2B0F45', //padrao de textos
-  branco: '#FFFFFF', //textos, cartoes e botoes
+  branco: '#FFFFFF', //textos cartoes e botoes
 };
