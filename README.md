@@ -24,7 +24,7 @@ Emanuel Almeida Dantas
 - **ChatGPT e Claude** — criação de imagens e auxílio na correção de bugs.
 
 ## Estrutura do projeto
-
+```text
 src/
 ├── app/
 │   ├── _layout.tsx          # Navegação e acesso compartilhado ao carrinho
@@ -45,6 +45,7 @@ src/
 assets/
 └── images/
     └── produtos/            # Logo e imagens dos produtos
+```
 
 ## Tutorial de Instalação
 1. Instale o [Node.js](https://nodejs.org/).
