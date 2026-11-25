@@ -27,7 +27,7 @@ export default function Inicio() {
       </Text>
     {/*Imagem de destaque*/}
       <Image
-        source={require('../../assets/images/produtos/acai-tradicional (1).png')}
+        source={require('../../assets/images/produtos/acai-tradicional.png')}
         style={styles.destaque}
         resizeMode="cover"
         accessibilityLabel="Açaí tradicional"
