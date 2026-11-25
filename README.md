@@ -1,56 +1,64 @@
-# Welcome to your Expo app 👋
+# Açaindo Delivery
+Aplicativo de cardápio e pedidos para uma açaiteria. 
+Torna possível consultar produtos, buscar pelo nome, adicionar itens ao carrinho, alterar quantidades e visualizar o resumo do pedido.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Desenvolvedor
+Emanuel Almeida Dantas
 
-## Get started
+## Funcionalidades
+- Tela inicial.
+- Cardápio com imagens, descrições e preços.
+- Busca de produtos pelo nome.
+- Adição e remoção de produtos do carrinho.
+- Alteração da quantidade de cada produto.
+- Cálculo automático do subtotal e do total.
+- Resumo e confirmação visual do pedido.
 
-1. Install dependencies
+## Tecnologias e ferramentas
+- **React Native** — construção das telas para dispositivos móveis.
+- **Expo** — execução e configuração do aplicativo.
+- **Expo Router** — navegação entre as telas.
+- **TypeScript** — tipagem dos dados e componentes.
+- **Git e GitHub** — controle de versões e armazenamento do projeto.
+- **Visual Studio Code** — edição do código.
+- **ChatGPT e Claude** — criação de imagens e auxílio na correção de bugs.
 
+## Estrutura do projeto
+```text
+src/
+├── app/
+│   ├── _layout.tsx          # Navegação e acesso compartilhado ao carrinho
+│   ├── index.tsx            # Tela inicial
+│   ├── cardapio.tsx         # Cardápio e busca de produtos
+│   ├── carrinho.tsx         # Itens selecionados e valor total
+│   └── pedido.tsx           # Resumo e confirmação visual do pedido
+├── components/
+│   ├── ItemCarrinho.tsx     # Item exibido no carrinho
+│   └── ProdutosCard.tsx     # Cartão de produto do cardápio
+├── constants/
+│   └── cores.ts             # Paleta de cores do aplicativo
+├── context/
+│   └── CarrinhoContext.tsx  # Estado e operações do carrinho
+└── data/
+    └── produtos.ts          # Tipo e lista de produtos
+
+assets/
+└── images/
+    └── produtos/            # Logo e imagens dos produtos
+```
+
+## Tutorial de Instalação
+1. Instale o [Node.js](https://nodejs.org/).
+2. Abra um terminal na pasta do projeto.
+3. Instale as dependências:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+4. Inicie o Expo:
    ```bash
    npx expo start
    ```
+5. Para abrir o aplicativo no celular, escaneie o QR code com o Expo Go.
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Observação
+A confirmação do pedido é apenas visual. O aplicativo ainda não envia pedidos para um servidor e não possui integração com banco de dados, pagamento ou serviço de entrega.
